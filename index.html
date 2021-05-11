@@ -1,0 +1,76 @@
+<html>
+    <head>
+       <style>
+           div{
+               text-align: center;
+                color:darkmagenta;
+                font-size: 1.25em;
+                font-family:Georgia, 'Times New Roman', Times, serif
+           }
+           body
+           {
+               background-image:linear-gradient( skyblue,rgb(56, 94, 151));;
+           }
+           h1{
+               padding-top:50px;
+
+               color:rgb(221, 35, 35);
+               font-family:Georgia, 'Times New Roman', Times, serif
+           }
+          
+           span
+           {
+               color:red;
+               font-weight:bold;
+               font-size:15px;
+           }
+           
+       </style>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="script.js">
+       
+        </script>
+    </head>
+    <body>
+        
+        <form name="myform" id="form" >
+            <div>
+                <h1>REGISTRATION</h1></div><br><br>
+                <div>
+            <label for="fname">NAME :</label>
+                <input id="fname" type="text" name="name" required>
+           <span class="error_form" id="username_error_message"></span>
+            </div><br><br>
+            <div>
+                <label for="mail">EMAIL :</label>
+                <input id="mail" type="email" name="email" required >
+                 <span class="error_form" id="email_error_message"></span></div><br><br>
+                <div>
+                    <label for="pass">PASSWORD :</label>
+                    <input id="pass" type="password" name="pass" required>
+                    <span class="error_form" id="pass_error_message"></span></div><br><br>
+                    <div>
+                        <label for="pwd">CONFIRM PASSWORD :</label>
+                        <input id="pwd" type="password" name="pass" required>
+                        <span class="error_form" id="conpass_error_message"></span></div><br><br>
+            <div> <label for="dob">DATE OF BIRTH :</label>
+                <input id="dob" type="text" name="dob" required>
+                <span class="error_form" id="dob_error_message"></span></div><br><br>
+            <div> <label for="num">NUMBER :</label>
+            <input id="num" type="tel" name="number" required>
+            <span class="error_form" id="num_error_message"></span></div><br><br>
+            <div> <label for="Register"></label>
+                <input id="Register" type="submit" name="Register" ></div><br><br>
+        
+        </form>
+    </body>
+    
+
+
+
+            
+            
+        
+    
+   
+</html>
