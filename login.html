@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+            margin-top: 25px;
+        }
+        div{
+               text-align: center;
+                color:darkmagenta;
+                font-size: 1.25em;
+                font-family:Georgia, 'Times New Roman', Times, serif;
+        }  
+           #myform{
+            margin-top: 80px;
+           }
+           
+           body
+           {
+             
+               background-color: skyblue;;
+           }
+           h1{
+               padding-top:100px;
+
+               color:rgb(221, 35, 35);
+               font-family:Georgia, 'Times New Roman', Times, serif
+           }
+           label{
+               padding-right:20px;
+           }
+          
+           span
+           {
+               color:red;
+               font-weight:bold;
+               font-size:15px;
+           }
+           
+    </style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+alert("REGISTRATION SUCCESSFUL! GO AHEAD WITH YOUR LOGIN PROCESS");
+$(document).ready(function(){
+
+$("#email_error_message").hide();
+$("#pass_error_message").hide();
+
+
+var email_error=false;
+var pass_error=false;
+
+
+
+
+$("#mail").focusout(function(){
+
+ check_email();
+
+});
+$("#pass").focusout(function(){
+ check_pass();
+
+});
+
+
+
+function check_email()
+{
+
+ let email=$("#mail").val();
+ if((!email.includes("@"))||(!email.includes(".")))
+ {
+     $("#email_error_message").html("Invalid email! :(");
+     $("#email_error_message").show();
+     email_error=true;
+ }
+ else{
+     $("#email_error_message").hide();
+ }
+ 
+}
+
+
+function check_pass()
+{
+
+ let len=$("#pass").val().length;
+ if(len < 4)
+ {
+     $("#pass_error_message").html("Need atleast 4 characters!");
+     $("#pass_error_message").show();
+     pass_error=true;
+ }
+ else{
+     $("#pass_error_message").hide();
+ }
+ 
+}
+});
+</script>
+
+
+</head>
+<body>
+     
+    <h1>LOGIN HERE :)</h1>
+  
+    <form action="" id="myform">
+    <div>
+        <label for="mail">EMAIL :</label>
+        <input id="mail" type="email" name="email" required >
+         <span class="error_form" id="email_error_message"></span></div><br><br>
+        <div>
+            <label for="pass">PASSWORD :</label>
+            <input id="pass" type="password" name="pass" required>
+            <span class="error_form" id="pass_error_message"></span></div><br><br>
+            <div> <label for="Register"></label>
+                <input id="Register" type="submit" name="Register" ></div><
+</form>
+
+</body>
+</html>
