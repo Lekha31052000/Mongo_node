@@ -34,24 +34,49 @@ app.post("/reg",function(req,res){
         number:req.body.number
     })
    
+    
     mongoose.connect(url,function(err,db){
-             //  res.send(req.body);
-                db.collection("form_details").insertOne(newNote,function(err,db){
-                  if(err)
-                  {
-                      throw err;
-                  }
-                   newNote.save();
-                    console.log("inserted");
-                 
-                })
+        
+        //  res.send(req.body);
+        let query={email:req.body.email,pass:req.body.pass};
+        db.collection("form_details").find(query).toArray(function(err,result){
+           if(err)
+           throw err;
+           
+          
+           if(!result.length)
+          
+    {
+
+           db.collection("form_details").insertOne(newNote,function(err,db){
+             if(err)
+             {
+                 throw err;
+             }
+              newNote.save();
+             console.log("new data inserted");
+              res.redirect("/login");
+          
+           
+
+           })
+       }
+       else{
+           console.log("data exists");
+           res.redirect("/reg");
+       }
+          
+
+         
+       })  
+
 
                
 
               
         
 })
-res.redirect("/login");
+
 })
 
 const loginSchema ={
@@ -150,6 +175,16 @@ app.post("/insert",function(req,res){
     mongoose.connect(url,function(err,db){
         
              //  res.send(req.body);
+             let query={email:req.body.email,pass:req.body.pass};
+             db.collection("form_details").find(query).toArray(function(err,result){
+                if(err)
+                throw err;
+                
+               
+                if(!result.length)
+               
+         {
+
                 db.collection("form_details").insertOne(datainsert,function(err,db){
                   if(err)
                   {
@@ -157,16 +192,21 @@ app.post("/insert",function(req,res){
                   }
                    datainsert.save();
 
-                    console.log("new data inserted");
-                 
-                })
+                console.log("new data inserted");
+                res.redirect("/delete");
 
+                })
+            }
+            else{
+                console.log("data exists");
+            res.redirect("/insert");
+            }
                
 
               
-        
+            })  
 })
-res.redirect("/delete");
+
 })
 
 
@@ -191,7 +231,7 @@ app.post("/delete",function(req,res){
       
        
     })
-    res.send(req.body);
+    //res.send(req.body);
     mongoose.connect(url,function(err,db){
         let query={email:req.body.email};
              
@@ -232,10 +272,10 @@ app.post("/read",function(req,res){
         email:req.body.email,
         
     })
-//    res.send(req.body);
+
     mongoose.connect(url,function(err,db){
         let quer={email:req.body.email};
-        //res.send("RECORDS FOUND!!🤩🤩");
+     
              db.collection("form_details").find(quer).toArray(function(err, result) {
                 if (err) throw err;
             
@@ -249,7 +289,7 @@ app.post("/read",function(req,res){
                    console.log("no records found:(")
                    res.redirect("/read");
                 }
-                  //console.log("records found");
+                  
                   console.log(result);
                 })
 
@@ -259,6 +299,7 @@ app.post("/read",function(req,res){
         
 })
 
+        
 })
 
 
@@ -298,15 +339,16 @@ app.post("/update",function(req,res){
                 if (err) throw err;
             
                 
-                
                   console.log("updated successfully");
+                 
                 })
 
                
-
+                
               
         
 })
+
 
 })
 
