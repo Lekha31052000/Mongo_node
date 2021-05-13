@@ -16,6 +16,7 @@ const Schema ={
     dob:String,
     number:String
 }
+var myDateString = Date();
 
 const Note=mongoose.model("Note",Schema);
 
@@ -113,7 +114,206 @@ app.post("/login",function(req,res){
 
 app.get("/profile",function(req,res){
     res.sendFile(__dirname+"/profile.html");
+    
+    
 })
+app.post("/profile",function(req,res){
+    res.redirect("/insert");
+})
+
+
+const schema ={
+    name:String,
+    email:String,
+    pass:String,
+    password:String,
+    dob:String,
+    number:String
+}
+
+const insert=mongoose.model("insert",schema);
+
+app.get("/insert",function(req,res){
+    res.sendFile(__dirname+"/insert.html");
+})
+
+app.post("/insert",function(req,res){
+    let datainsert=new insert({
+        name:req.body.name,
+        email:req.body.email,
+        pass:req.body.pass,
+        password:req.body.password,
+        dob:req.body.dob,
+        number:req.body.number
+    })
+   
+    mongoose.connect(url,function(err,db){
+        
+             //  res.send(req.body);
+                db.collection("form_details").insertOne(datainsert,function(err,db){
+                  if(err)
+                  {
+                      throw err;
+                  }
+                   datainsert.save();
+
+                    console.log("new data inserted");
+                 
+                })
+
+               
+
+              
+        
+})
+res.redirect("/delete");
+})
+
+
+
+
+const delschema ={
+   
+    email:String
+   
+}
+
+const delet=mongoose.model("delete",delschema);
+
+app.get("/delete",function(req,res){
+    res.sendFile(__dirname+"/delete.html");
+})
+
+app.post("/delete",function(req,res){
+    let datadel=new delet({
+       
+        email:req.body.email
+      
+       
+    })
+    res.send(req.body);
+    mongoose.connect(url,function(err,db){
+        let query={email:req.body.email};
+             
+            //  dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+                db.collection("form_details").deleteMany(query,function(err,db){
+                  if(err)
+                  {
+                      throw err;
+                  }
+                   //query.save();
+                    console.log("new data deleted");
+                 
+                })
+
+               
+
+              
+        
+})
+res.redirect("/read");
+
+})
+
+
+const readSchema ={
+    email:String,
+    
+}
+
+const read=mongoose.model("read",readSchema);
+
+app.get("/read",function(req,res){
+    res.sendFile(__dirname+"/read.html");
+})
+
+app.post("/read",function(req,res){
+    let newread=new read({
+        email:req.body.email,
+        
+    })
+//    res.send(req.body);
+    mongoose.connect(url,function(err,db){
+        let quer={email:req.body.email};
+        //res.send("RECORDS FOUND!!🤩🤩");
+             db.collection("form_details").find(quer).toArray(function(err, result) {
+                if (err) throw err;
+            
+                if(result.length>0)
+                {
+                    res.redirect("/update");
+                    
+                }
+                else
+                {
+                   console.log("no records found:(")
+                   res.redirect("/read");
+                }
+                  //console.log("records found");
+                  console.log(result);
+                })
+
+               
+
+              
+        
+})
+
+})
+
+
+
+
+
+
+
+
+
+
+const updateSchema ={
+    email:String,
+    
+}
+
+const update=mongoose.model("update",updateSchema);
+
+app.get("/update",function(req,res){
+    res.sendFile(__dirname+"/update.html");
+})
+
+app.post("/update",function(req,res){
+   
+
+    
+    let newup=new update({
+        email:req.body.email,
+        
+    })
+   res.send(req.body);
+    mongoose.connect(url,function(err,db){
+        let upquer={email:req.body.email};
+        var newvalues = { $set: {name:"paapuKutty"} };
+      
+        db.collection("form_details").updateMany(upquer, newvalues, function(err, res)  {
+                if (err) throw err;
+            
+                
+                
+                  console.log("updated successfully");
+                })
+
+               
+
+              
+        
+})
+
+})
+
+
+
+
+
 
 
 

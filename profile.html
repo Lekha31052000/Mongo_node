@@ -7,35 +7,62 @@
     <title>Document</title>
 </head>
 <style>
-    div{
-        text-align: center;
-         color:darkmagenta;
-         font-size: 20px;
-         font-family:Georgia, 'Times New Roman', Times, serif
-    }
-    body
-    {
-        background-color: skyblue;
-    }
     h1{
-        padding-top:50px;
+        text-align: center;
+        margin-top: 25px;
+    }
+    div{
+           text-align: center;
+            color:darkmagenta;
+            font-size: 1.25em;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+    }  
+       #myform{
+        margin-top: 0px;
+       }
+       
+       body
+       {
+         
+           background-color: skyblue;;
+       }
+       h1{
+           padding-top:50px;
 
-        color:rgb(221, 35, 35);
-        font-family:Georgia, 'Times New Roman', Times, serif
-    }
-   
-    span
-    {
-        color:red;
-        font-weight:bold;
-        font-size:15px;
-    }
-    
+           color:rgb(221, 35, 35);
+           font-family:Georgia, 'Times New Roman', Times, serif
+       }
+       label{
+           padding-right:20px;
+       }
+      /* ul li{
+          display: inline-block;
+          margin-top: 40px;
+          margin-bottom: 0px;
+         
+      
+      }
+      a
+      {
+      
+          text-decoration: none;
+          padding-right:250px;
+          padding-left: 10px;
+      }
+        /* a:hover{ */
+           /* text-decoration: darkgoldenrod;
+           text-orientation: sideways-right; */
+       /* } 
+        */ 
 </style>
 <script>
-
-    window.addEventListener('load',()=>{
-        
+     function validate()
+{
+    
+    alert("PROFLIE SETTINGS DONE😊");
+}
+ window.addEventListener('load',()=>{
+   
       const name=localStorage.getItem("NAME");
       const email=localStorage.getItem("EMAIL");
       const dob=localStorage.getItem("DOB");
@@ -44,29 +71,58 @@
         document.getElementById("fname").value=name;
         document.getElementById("mail").value=email;
         document.getElementById("dob").value=dob;
+        document.getElementById("date").value="May 13 2021";
+        document.getElementById("dateup").value=Date().substring(4,15);
         
     })
 </script>
+
 <body>
-   
-    <form action="" name="myform" id="form" method="GET" >
+    <!-- <section>
+        <ul>
+            <li>
+                <a href="/insert.html">INSERT</a>
+            </li>
+            <li><a href="">UPDATE</a></li>
+            <li><a href="">DELETE</a></li>
+            <li><a href="">READ</a></li>
+        </ul> -->
+    </section>
+    <form action="" name="myform" id="form" method="POST" >
         <div>
             <h1>SET YOUR PROFILE!😍</h1></div><br><br>
             <div>
         <label for="fname">NAME :</label>
             <input id="fname" type="text" name="name"  required>
-       <span class="error_form" id="username_error_message"></span>
+   
         </div><br><br>
         <div>
             <label for="mail">EMAIL :</label>
             <input id="mail" type="email" name="email" required >
-             <span class="error_form" id="email_error_message"></span></div><br><br>
+            </div><br><br>
             
         <div> <label for="dob">DATE OF BIRTH :</label>
             <input id="dob" type="date" name="dob" required>
-            <span class="error_form" id="dob_error_message"></span></div>
+        </div><br><br>
+            <div> <label for="AD">ACADEMIC DEGREE :</label>
+                <input id="AD" type="text" name="AD" required>
+               </div><br><br>
+                <div> <label for="desig">DESIGNATION :</label>
+                    <input id="desig" type="text" name="desig" required>
+                   </div><br><br>
+
+                   <div> <label for="date">DATE CREATED:</label>
+                    <input id="date" type="text" name="date" required>
+                   </div><br><br>
+
+                   
+                   <div> <label for="dateup">DATE UPDATED:</label>
+                    <input id="dateup" type="text" name="dateup" required>
+                   </div><br><br>
             <div> <label for="Register"></label>
-                <input id="Register" type="submit" name="Register" ></div></form>
+                <input id="Register" type="submit" name="Register" onclick="validate()"></div></form>
+
+               
 
 </body>
 </html>
