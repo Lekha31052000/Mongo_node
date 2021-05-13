@@ -53,9 +53,68 @@ app.post("/reg",function(req,res){
 res.redirect("/login");
 })
 
+const loginSchema ={
+    
+    email:String,
+    pass:String,
+    
+}
+
+const Newlog=mongoose.model("Newlog",loginSchema);
+
+
 app.get("/login",function(req,res){
    res.sendFile(__dirname+"/login.html");
+   
 })
+
+
+
+
+app.post("/login",function(req,res){
+    let login=new Newlog({
+        
+        email:req.body.email,
+        pass:req.body.pass,
+        
+    })
+   
+    mongoose.connect(url,function(err,db){
+        let query={email:req.body.email,pass:req.body.pass};
+        db.collection("form_details").find(query).toArray(function(err,result){
+            if(err)
+            throw err;
+            
+           
+            if(result.length>0)
+            {
+                res.redirect("/profile")
+
+            }
+            else{
+                res.redirect("/login");
+               
+            
+            }
+        })
+        
+           
+            
+                
+                 
+                })
+
+               
+
+              
+        
+})
+
+
+app.get("/profile",function(req,res){
+    res.sendFile(__dirname+"/profile.html");
+})
+
 
 
 app.listen(3000,function(){

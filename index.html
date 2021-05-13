@@ -4,7 +4,7 @@
            div{
                text-align: center;
                 color:darkmagenta;
-                font-size: 1.25em;
+                font-size: 20px;
                 font-family:Georgia, 'Times New Roman', Times, serif
            }
            body
@@ -83,7 +83,7 @@ $(document).ready(function(){
         let ulength=$("#fname").val().length;
         if(ulength < 5)
         {
-            $("#username_error_message").html("Should be between 5-20 characters");
+            $("#username_error_message").html("Should be between 5-20 characters😅");
             $("#username_error_message").show();
             username_error=true;
         }
@@ -120,7 +120,7 @@ $(document).ready(function(){
         let len=$("#pass").val().length;
         if(len < 4)
         {
-            $("#pass_error_message").html("Need atleast 4 characters!");
+            $("#pass_error_message").html("Need atleast 4 characters🙄!");
             $("#pass_error_message").show();
             pass_error=true;
         }
@@ -137,7 +137,7 @@ $(document).ready(function(){
         
         if(pwd!=pass)
         {
-            $("#conpass_error_message").html("Incorrect password!");
+            $("#conpass_error_message").html("Incorrect password!🤨");
             $("#conpass_error_message").show();
             pwd_error=true;
         }
@@ -152,9 +152,9 @@ $(document).ready(function(){
     {
         let dob=$("#dob").val();
        
-        if(!dob || isNaN(dob))
+        if(!dob)
         {
-            $("#dob_error_message").html("Enter DOB!");
+            $("#dob_error_message").html("Enter DOB!🤔");
             $("#dob_error_message").show();
             dob_error=true;
         }
@@ -173,7 +173,7 @@ $(document).ready(function(){
        
         if(!num || num.length>10 || isNaN(num))
         {
-            $("#num_error_message").html("Enter valid number!");
+            $("#num_error_message").html("Enter valid number!🤓");
             $("#num_error_message").show();
             num_error=true;
         }
@@ -187,6 +187,22 @@ $(document).ready(function(){
 
 });
 
+function validate()
+{
+   
+    alert("REGISTRATION SUCCESSFUL! GO AHEAD WITH YOUR LOGIN PROCESS🤩");
+  
+
+
+    const name=document.getElementById("fname").value;
+    const email=document.getElementById("mail").value;
+        const dob=document.getElementById("dob").value;
+
+        localStorage.setItem("NAME",name);
+        localStorage.setItem("EMAIL",email);
+        localStorage.setItem("DOB",dob);
+        return;
+}
 
 
         </script>
@@ -195,7 +211,7 @@ $(document).ready(function(){
         
         <form action="/reg" name="myform" id="form" method="POST" >
             <div>
-                <h1>REGISTRATION</h1></div><br><br>
+                <h1><i>REGISTRATION</i>👀</h1></div><br><br>
                 <div>
             <label for="fname">NAME :</label>
                 <input id="fname" type="text" name="name" required>
@@ -214,13 +230,15 @@ $(document).ready(function(){
                         <input id="pwd" type="password" name="password" required>
                         <span class="error_form" id="conpass_error_message"></span></div><br><br>
             <div> <label for="dob">DATE OF BIRTH :</label>
-                <input id="dob" type="text" name="dob" required>
+                <input id="dob" type="date" name="dob" required>
                 <span class="error_form" id="dob_error_message"></span></div><br><br>
             <div> <label for="num">NUMBER :</label>
             <input id="num" type="tel" name="number" required>
             <span class="error_form" id="num_error_message"></span></div><br><br>
             <div> <label for="Register"></label>
-                <input id="Register" type="submit" name="Register" ></div><br><br>
+                <input id="Register" type="submit" name="Register" onclick="validate()"></div><br><br>
+
+                
         
         </form>
         

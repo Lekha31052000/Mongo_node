@@ -47,7 +47,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-alert("REGISTRATION SUCCESSFUL! GO AHEAD WITH YOUR LOGIN PROCESS");
+
 $(document).ready(function(){
 
 $("#email_error_message").hide();
@@ -95,7 +95,7 @@ function check_pass()
  let len=$("#pass").val().length;
  if(len < 4)
  {
-     $("#pass_error_message").html("Need atleast 4 characters!");
+     $("#pass_error_message").html("Need atleast 4 characters!🙄");
      $("#pass_error_message").show();
      pass_error=true;
  }
@@ -105,15 +105,23 @@ function check_pass()
  
 }
 });
+
+function validate()
+{
+  
+    alert("LOGIN SUCCESSFUL!! :)");
+   
+ 
+}
 </script>
 
 
 </head>
 <body>
      
-    <h1>LOGIN HERE :)</h1>
+    <h1>LOGIN HERE 🥰</h1>
   
-    <form action="" id="myform">
+    <form action="/login" id="myform" method="POST">
     <div>
         <label for="mail">EMAIL :</label>
         <input id="mail" type="email" name="email" required >
@@ -123,7 +131,7 @@ function check_pass()
             <input id="pass" type="password" name="pass" required>
             <span class="error_form" id="pass_error_message"></span></div><br><br>
             <div> <label for="Register"></label>
-                <input id="Register" type="submit" name="Register" ></div><
+                <input id="Register" type="submit" name="Register" onclick="validate()"></div>
 </form>
 
 </body>
