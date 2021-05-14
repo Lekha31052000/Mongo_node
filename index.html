@@ -198,10 +198,11 @@ function validate()
     const name=document.getElementById("fname").value;
     const email=document.getElementById("mail").value;
         const dob=document.getElementById("dob").value;
-
+    const dateCreated=Date().substring(4,15);
         localStorage.setItem("NAME",name);
         localStorage.setItem("EMAIL",email);
         localStorage.setItem("DOB",dob);
+        localStorage.setItem("CREATEDDATE",dateCreated);
         return;
 }
 

@@ -14,7 +14,7 @@
     div{
            text-align: center;
             color:darkmagenta;
-            font-size: 1.25em;
+            font-size: 20px;
             font-family:Georgia, 'Times New Roman', Times, serif;
     }  
        #myform{
@@ -27,7 +27,7 @@
            background-color: skyblue;;
        }
        h1{
-           padding-top:50px;
+           padding-top:10px;
 
            color:rgb(221, 35, 35);
            font-family:Georgia, 'Times New Roman', Times, serif
@@ -35,25 +35,31 @@
        label{
            padding-right:20px;
        }
-      /* ul li{
+      section
+      {
+          margin-top: 10px;
+      }
+      ul li{
           display: inline-block;
-          margin-top: 40px;
-          margin-bottom: 0px;
-         
+         font-size:16px ;
+      
       
       }
       a
       {
-      
+      color:rgb(216, 15, 25);
           text-decoration: none;
           padding-right:250px;
           padding-left: 10px;
       }
-        /* a:hover{ */
-           /* text-decoration: darkgoldenrod;
-           text-orientation: sideways-right; */
-       /* } 
-        */ 
+      ul li :hover{
+           
+            color:gold;
+            
+        
+           text-orientation: sideways-right; 
+        } 
+     
 </style>
 <script>
      function validate()
@@ -67,28 +73,29 @@
       const email=localStorage.getItem("EMAIL");
       const dob=localStorage.getItem("DOB");
         
-        
+        const dateUpdated=localStorage.getItem("DATE");
+        const dateCreated=localStorage.getItem("CREATEDDATE");
         document.getElementById("fname").value=name;
         document.getElementById("mail").value=email;
         document.getElementById("dob").value=dob;
-        document.getElementById("date").value="May 13 2021";
-        document.getElementById("dateup").value=Date().substring(4,15);
+        document.getElementById("dateup").value=dateUpdated;
+        document.getElementById("date").value=dateCreated;
         
     })
 </script>
 
 <body>
-    <!-- <section>
+   <section>
         <ul>
             <li>
-                <a href="/insert.html">INSERT</a>
+                <a href="http://localhost:3000/insert"><b>INSERT</b></a>
             </li>
-            <li><a href="">UPDATE</a></li>
-            <li><a href="">DELETE</a></li>
-            <li><a href="">READ</a></li>
-        </ul> -->
+            <li><a href="http://localhost:3000/update"><b>UPDATE</b></a></li>
+            <li><a href="http://localhost:3000/delete"><b>DELETE</b></a></li>
+            <li><a href="http://localhost:3000/read"><b>READ</a></li></li>
+        </ul>
     </section>
-    <form action="" name="myform" id="form" method="POST" >
+    <form action="/profile" name="myform" id="form" method="POST" >
         <div>
             <h1>SET YOUR PROFILE!😍</h1></div><br><br>
             <div>

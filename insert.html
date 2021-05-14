@@ -25,6 +25,17 @@
                font-weight:bold;
                font-size:15px;
            }
+           a{
+            color:rgb(216, 15, 25);
+          text-decoration: none;
+          padding-right:250px;
+          padding-left: 10px;
+
+           }
+
+           a:hover{
+            color:gold;
+           }
            
        </style>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -209,7 +220,7 @@ function validate()
         </script>
     </head>
     <body>
-        
+        <a href="http://localhost:3000/profile"><b>👈 BACK TO PROFILE</b></a>
         <form action="/insert" name="myform" id="form" method="POST" >
             <div>
                 <h1><i>INSERT</i>👇</h1></div><br><br>
@@ -236,7 +247,11 @@ function validate()
             <div> <label for="num">NUMBER :</label>
             <input id="num" type="tel" name="number" required>
             <span class="error_form" id="num_error_message"></span></div><br><br>
-            <div> <label for="Register"></label>
+            
+
+                <div> 
+
+                <label for="Register"></label>
                 <input id="Register" type="submit" name="Register" onclick="validate()"></div><br><br>
 
                 

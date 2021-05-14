@@ -143,7 +143,7 @@ app.get("/profile",function(req,res){
     
 })
 app.post("/profile",function(req,res){
-    res.redirect("/insert");
+    res.redirect("/profile");
 })
 
 
@@ -193,7 +193,7 @@ app.post("/insert",function(req,res){
                    datainsert.save();
 
                 console.log("new data inserted");
-                res.redirect("/delete");
+                res.redirect("/profile");
 
                 })
             }
@@ -251,7 +251,7 @@ app.post("/delete",function(req,res){
               
         
 })
-res.redirect("/read");
+res.redirect("/profile");
 
 })
 
@@ -281,7 +281,7 @@ app.post("/read",function(req,res){
             
                 if(result.length>0)
                 {
-                    res.redirect("/update");
+                    res.redirect("/profile");
                     
                 }
                 else
@@ -330,7 +330,7 @@ app.post("/update",function(req,res){
         email:req.body.email,
         
     })
-   res.send(req.body);
+   //res.send(req.body);
     mongoose.connect(url,function(err,db){
         let upquer={email:req.body.email};
         var newvalues = { $set: {name:"paapuKutty"} };
@@ -349,7 +349,7 @@ app.post("/update",function(req,res){
         
 })
 
-
+res.redirect("/profile");
 })
 
 

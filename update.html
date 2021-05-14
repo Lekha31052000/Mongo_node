@@ -30,10 +30,30 @@
             font-weight:bold;
             font-size:15px;
         }
+        a{
+            color:rgb(216, 15, 25);
+          text-decoration: none;
+          padding-right:250px;
+          padding-left: 10px;
+
+           }
+
+           a:hover{
+            color:gold;
+           }
         
     </style>
+    <script>
+        function date()
+        {
+            const dateUpdated=Date().substring(4,15);
+            localStorage.setItem("DATE",dateUpdated);
+            return;
+        }
+    </script>
 </head>
 <body>
+    <a href="http://localhost:3000/profile"><b>👈BACK TO PROFILE</b></a>
     <h1>UPDATE YOUR DATA🧐</h1>
     <form name="myform" method="POST" action="/update">
         <div>
@@ -41,6 +61,6 @@
             <input id="mail" type="email" name="email" required >
              </div><br><br>
              <div> <label for="Register"></label>
-                <input id="Register" type="submit" name="Register" ></div>    </form>
+                <input id="Register" type="submit" name="Register" onclick="date()" ></div>    </form>
 </body>
 </html>
