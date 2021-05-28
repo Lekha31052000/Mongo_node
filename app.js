@@ -328,12 +328,13 @@ app.post("/update",function(req,res){
     
     let newup=new update({
         email:req.body.email,
+        myName:req.body.name
         
     })
    //res.send(req.body);
     mongoose.connect(url,function(err,db){
         let upquer={email:req.body.email};
-        var newvalues = { $set: {name:"paapuKutty"} };
+        var newvalues = { $set: {name:req.body.name} };
       
         db.collection("form_details").updateMany(upquer, newvalues, function(err, res)  {
                 if (err) throw err;
